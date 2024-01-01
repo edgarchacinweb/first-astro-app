@@ -1,4 +1,7 @@
 ---
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+
 import "../styles/global.css";
 
 const pageTitle = "Sobre mí";
@@ -7,10 +10,10 @@ const identity = {
   firstname: "Edgar",
   country: "Venezuela",
   occupation: "Desarrollador Web freelance",
-  hobbies: ["Programar", "Jugar videojuegos", "Estudiar economía"]
+  hobbies: ["Programar", "Jugar videojuegos", "Estudiar economía", "Ver animé"]
 };
 
-const skills = ["HTML", "CSS", "Tailwind CSS", "Javascript", "Astro"];
+const skills = ["HTML", "CSS", "Tailwind CSS", "Javascript", "Node js", "Astro"];
 
 const happy = true;
 const finished = false;
@@ -42,9 +45,7 @@ const textCase = "uppercase";
     </style>
 	</head>
 	<body>
-    <a href="/">Inicio</a>
-    <a href="/about/">Sobre mi</a>
-    <a href="/blog">Blog</a>
+    <Navigation />
 
     <h1>{pageTitle}</h1>
     <p>
@@ -82,5 +83,7 @@ const textCase = "uppercase";
     {happy && <p>¡Estoy feliz de aprender Astro!</p>}
     {finished && <p>¡He terminado este tutorial!</p>}
     {goal === 3 ? <p>Mi objetivo es terminar en 3 días.</p> : <p>Mi objetivo no son 3 días.</p>}
+
+    <Footer />
 	</body>
 </html>
