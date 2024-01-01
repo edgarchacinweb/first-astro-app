@@ -1,8 +1,5 @@
 ---
-import Navigation from '../components/Navigation.astro';
-import Footer from '../components/Footer.astro';
-
-import "../styles/global.css";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 const pageTitle = "Sobre mí";
 
@@ -24,66 +21,53 @@ const fontWeight = "bold";
 const textCase = "uppercase";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
-    <style define:vars={{skillColor, fontWeight, textCase}}>
-      h1 {
-        color: purple;
-        font-size: 4rem;
+<BaseLayout pageTitle={ pageTitle }>
+  <p>
+    Aspirante a desarrollador freelance frontend y estudiante universitario de ingeniería 
+    informática. Este es mi primer sitio web hecho con  el framework Astro, ¡Bienvenido!
+  </p>
+  <p>
+    Estoy trabajando con el tutorial introductorio de Astro. Esta es la segunda página de mi sitio 
+    web, ¡Es la primera página construida "completamente" por mí mismo!
+  </p>
+
+  <h3>Algunos datos sobre mí</h3>
+    <ol>
+    <li>Me llamo {identity.firstname}</li>
+    <li>Vivo en {identity.country} y trabajo como <strong>{identity.occupation}</strong></li>
+    <li>
+      Mis hobbies: {
+        identity.hobbies.map((b, i, arr) => 
+        <strong>{b}</strong><>{(i < arr.length-1) && <>, </>}</>)
       }
+    </li>
+  </ol>
 
-      .skill {
-        font-weight: var(--fontWeight);
-        color: var(--skillColor);
-        text-transform: var(--textCase);
-      }
-    </style>
-	</head>
-	<body>
-    <Navigation />
+  <h3>Mis habilidades</h3>
+  <ul>
+    { skills.map(skill => <li class="skill">{skill}</li>) }
+  </ul>
 
-    <h1>{pageTitle}</h1>
-    <p>
-      Aspirante a desarrollador freelance frontend y estudiante universitario de ingeniería 
-      informática. Este es mi primer sitio web hecho con  el framework Astro, ¡Bienvenido!
-    </p>
-    <p>
-      Estoy trabajando con el tutorial introductorio de Astro. Esta es la segunda página de mi sitio 
-      web, ¡Es la primera página construida "completamente" por mí mismo!
-    </p>
+  <p>
+    Este sitio web se irá actualizando a medida que vaya completando la lecciones del curso 
+    introductorio de Astro, por favor, ¡No dejes de visitarlo para ver como va mi viaje como 
+    desarrollador web frontend!
+  </p>
 
-    <h3>Algunos datos sobre mí</h3>
-      <ol>
-      <li>Me llamo {identity.firstname}</li>
-      <li>Vivo en {identity.country} y trabajo como <strong>{identity.occupation}</strong></li>
-      <li>
-        Mis hobbies: {
-          identity.hobbies.map((b, i, arr) => 
-          <strong>{b}</strong><>{(i < arr.length-1) && <>, </>}</>)
-        }
-      </li>
-    </ol>
+  {happy && <p>¡Estoy feliz de aprender Astro!</p>}
+  {finished && <p>¡He terminado este tutorial!</p>}
+  {goal === 3 ? <p>Mi objetivo es terminar en 3 días.</p> : <p>Mi objetivo no son 3 días.</p>}
+</BaseLayout>
 
-    <h3>Mis habilidades</h3>
-    <ul>
-      { skills.map(skill => <li class="skill">{skill}</li>) }
-    </ul>
+<!-- <style define:vars={{skillColor, fontWeight, textCase}}>
+  h1 {
+    color: purple;
+    font-size: 4rem;
+  }
 
-    <p>
-      Este sitio web se irá actualizando a medida que vaya completando la lecciones del curso 
-      introductorio de Astro, por favor, ¡No dejes de visitarlo para ver como va mi viaje como 
-      desarrollador web frontend!
-    </p>
-
-    {happy && <p>¡Estoy feliz de aprender Astro!</p>}
-    {finished && <p>¡He terminado este tutorial!</p>}
-    {goal === 3 ? <p>Mi objetivo es terminar en 3 días.</p> : <p>Mi objetivo no son 3 días.</p>}
-
-    <Footer />
-	</body>
-</html>
+  .skill {
+    font-weight: var(--fontWeight);
+    color: var(--skillColor);
+    text-transform: var(--textCase);
+  }
+</style> -->

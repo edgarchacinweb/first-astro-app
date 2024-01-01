@@ -1,11 +1,12 @@
 ---
+layout: "../../layouts/MarkdownPostLayout.astro"
 title: Mi tercera publicación en el blog
-author: Alumno de Astro
+author: Edgar Chacín
 description: "Tuve algunos problemas, pero preguntar en la comunidad me ayudó mucho."
 image:
   url: "https://docs.astro.build/assets/rays.webp"
   alt: "Miniatura de los rayos de Astro."
-pubDate: 2022-07-15
+pubDate: 2023-12-15
 tags: ["astro", "aprender en público", "contratiempos", "comunidad"]
 ---
 

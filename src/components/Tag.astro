@@ -1,0 +1,21 @@
+---
+const { title, color, hoverColor } = Astro.props;
+---
+<p>{title}</p>
+
+<style define:vars={{color, hoverColor}}>
+  p {
+    padding: 5px 15px;
+    color: #ffffff;
+    font-weight: bold;
+    background: var(--color);
+    border-radius: 5px;
+    user-select: none;
+    display: inline-block;
+    transition: background ease .4s;
+  }
+
+  p:hover {
+    background: var(--hoverColor);
+  }
+</style>
