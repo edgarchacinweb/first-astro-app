@@ -1,21 +1,22 @@
 ---
 const { title, color, hoverColor } = Astro.props;
 ---
-<p>{title}</p>
+<a href=`../tags/${title}`>{title}</a>
 
 <style define:vars={{color, hoverColor}}>
-  p {
+  a {
     padding: 5px 15px;
     color: #ffffff;
     font-weight: bold;
+    text-decoration: none;
     background: var(--color);
     border-radius: 5px;
     user-select: none;
-    display: inline-block;
+    cursor: pointer;
     transition: background ease .4s;
   }
 
-  p:hover {
+  a:hover {
     background: var(--hoverColor);
   }
 </style>
