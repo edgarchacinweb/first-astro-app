@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+const pageTitle = "Índice de etiquetas";
+const allPosts = await Astro.glob("../posts/*.md");
+const filteredTags = [...new Set(allPosts.map(tag => tag.frontmatter.tags).flat())];
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <div class="tags">
+    {filteredTags.map(tag => <p class="tag"><a href={`./${tag}`}>{tag}</a></p>)}
+  </div>
+</BaseLayout>
+
+<style>
+  a {
+    color: #1f1f1f;
+    font-weight: bold;
+    transition: color ease .4s, text-shadow ease .4s;
+  }
+
+  a:hover {
+    color: #6d28d4;
+    text-shadow: 0 0 3px #6d28d4;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    margin: 0.25em;
+    border: dotted 1px #a1a1a1;
+    border-radius: .5em;
+    padding: .5em 1em;
+    font-size: 1.15em;
+    background-color: #F8FCFD;
+  }
+</style>
